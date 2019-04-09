@@ -27,7 +27,7 @@ namespace WebApi2.Controllers
         }
         
         [HttpPost("api/user")]
-        public async Task<IActionResult> SaveUser(User user)
+        public async Task<IActionResult> SaveUser([FromBody] User user)
         {
             if (user == null)
                 return BadRequest($"User cannot be null!");
