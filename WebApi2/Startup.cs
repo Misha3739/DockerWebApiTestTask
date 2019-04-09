@@ -48,7 +48,6 @@ namespace WebApi2
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

@@ -41,8 +41,25 @@ namespace WebApi1
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseMvc();
+            var redirectSection = Configuration.GetSection("RedirectTo").Get<RedirectConfigSection>();
+
+            app.MapWhen(
+                context => context.Request.Path.Value.StartsWith("/api/") && !context.Request.IsHttps,
+                builder => builder.RunProxy(new ProxyOptions
+            {
+                Scheme = "http",
+                Host = redirectSection.Http.Host,
+                Port = redirectSection.Http.Port,
+            }));
+            
+            app.MapWhen(
+                context => context.Request.Path.Value.StartsWith("/api/")&& context.Request.IsHttps,
+                builder => builder.RunProxy(new ProxyOptions
+                {
+                    Scheme = "https",
+                    Host = redirectSection.Https.Host,
+                    Port = redirectSection.Https.Port,
+                }));
         }
     }
 }
