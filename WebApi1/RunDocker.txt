@@ -1,0 +1,3 @@
+docker build -t [ContainerName] .
+
+docker run -it -p 8070:8070  [ContainerName] -e DOTNET_RUNNING_IN_CONTAINER=true
