@@ -6,13 +6,16 @@ EXPOSE 44370
 FROM microsoft/dotnet:2.2-sdk AS build 
 COPY . /src
 WORKDIR /src 
-COPY ["WebApi1.csproj", "WebApi1/"]
-COPY ["Properties/launchSettings.json", "WebApi1/Properties/"]
-COPY ["Program.cs", "WebApi1/"] 
-COPY ["Startup.cs", "WebApi1/"] 
-COPY ["RedirectSection.cs", "WebApi1/"] 
-COPY ["appsettings.json", "WebApi1/"]
-COPY ["Controllers/ValuesController.cs", "WebApi1/Controllers/"]   
+
+COPY WebApi.Data/*.csproj WebApi.Data/
+COPY WebApi.Data/DomainObjects/*.cs WebApi.Data/DomainObjects/
+
+COPY WebApi1/*.cs WebApi1/
+COPY WebApi1/*.csproj WebApi1/
+COPY WebApi1/*.cs WebApi1/
+COPY WebApi1/appsettings.json WebApi1/
+COPY WebApi1/Properties/*.json WebApi1/Properties/
+
 COPY . .
 RUN dotnet restore "WebApi1/WebApi1.csproj" 
 
