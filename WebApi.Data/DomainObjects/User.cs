@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApi2.Data
+namespace WebApi.Data.DomainObjects
 {
     public class User
     {

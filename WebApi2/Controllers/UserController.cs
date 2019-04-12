@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Data.DomainObjects;
 using WebApi2.Data;
 using WebApi2.Repository;
 

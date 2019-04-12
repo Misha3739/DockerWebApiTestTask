@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Data.DomainObjects;
 using WebApi2.Data;
 
 namespace WebApi2.Repository

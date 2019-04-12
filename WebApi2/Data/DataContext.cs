@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebApi.Data.DomainObjects;
 
 namespace WebApi2.Data
 {
