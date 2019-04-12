@@ -16,27 +16,27 @@ namespace WebApi2.Controllers
         }
 
         [HttpGet("api/user/{id}")]
-        public async Task<IActionResult> GetUser(long id)
-        {
-            User user = await _userRepository.GetAsync(id);
-            if (user != null)
-            {
-                return Ok(user);
-            }
-
-            return BadRequest($"User with {id} was not found!");
-        }
-        
-        [HttpPost("api/user")]
-        public async Task<IActionResult> SaveUser([FromBody] User user)
-        {
-            if (user == null)
-                return BadRequest($"User cannot be null!");
-            if(string.IsNullOrEmpty(user.Name))
-                return BadRequest($"User should have name!");
-
-            await _userRepository.AddOrUpdateAsync(user);
-            return Ok($"User {user.Name} successfully saved!");
-        }
+                 public async Task<IActionResult> GetUser(long id)
+                 {
+                     User user = await _userRepository.GetAsync(id);
+                     if (user != null)
+                     {
+                         return Ok(user);
+                     }
+         
+                     return BadRequest($"User with {id} was not found!");
+                 }
+                 
+                 [HttpPost("api/user")]
+                 public async Task<IActionResult> SaveUser([FromBody] User user)
+                 {
+                     if (user == null)
+                         return BadRequest($"User cannot be null!");
+                     if(string.IsNullOrEmpty(user.Name))
+                         return BadRequest($"User should have name!");
+         
+                     await _userRepository.AddOrUpdateAsync(user);
+                     return Ok($"User {user.Name} with id = {user.Id} successfully saved!");
+                 }
     }
 }
