@@ -1,7 +1,5 @@
 FROM microsoft/dotnet:2.2-aspnetcore-runtime AS base 
 WORKDIR /app 
-EXPOSE 60 
-EXPOSE 44360
 
 FROM microsoft/dotnet:2.2-sdk AS build 
 COPY . /src
@@ -16,7 +14,7 @@ COPY WebApi2/*.cs WebApi2/
 COPY WebApi2/appsettings.json WebApi2/
 COPY WebApi2/Properties/*.json WebApi2/Properties/
 
-COPY . .
+#COPY . .
 RUN dotnet restore "WebApi2/WebApi2.csproj" 
 
 WORKDIR "/src/WebApi2" 

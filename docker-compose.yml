@@ -22,8 +22,6 @@ services:
   db:
     image: postgres
     restart: always
-    ports:
-      - 5433:5433
     environment:
       POSTGRES_USER: dbuser
       POSTGRES_PASSWORD: "newPassw0rd!"
