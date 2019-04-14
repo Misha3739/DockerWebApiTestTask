@@ -1,9 +1,6 @@
 version: '3'
 services: 
-  db:
-    image: postgres
-    ports:
-      - 5433:5433
+  
   webapi2:
     build: 
       context: .
@@ -13,15 +10,28 @@ services:
     #networks: ["back-tier"]
     depends_on:
       - db
-    
-  webapi1:
-    build:
+  db:
+    build: 
       context: .
-      dockerfile: DockerFileWebApi1
-    ports: 
-      - 8070:8070
-    depends_on:
-      - webapi2
+      dockerfile: DockerFilePostgres
+    restart: always
+    ports:
+      - 5433:5433
+    environment:
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: "newPassw0rd!"
+      POSTGRES_DB: testdb
+    #volumes:
+      #- ./data/postgres:/var/lib/postgresql/data
+
+  #webapi1:
+   # build:
+    #  context: .
+     # dockerfile: DockerFileWebApi1
+    #ports: 
+     # - 8070:8070
+    #depends_on:
+     # - webapi2
     #networks: ["back-tier"]
       
   
