@@ -7,7 +7,6 @@ services:
       dockerfile: DockerFileWebApi2
     ports:
       - 8060:8060
-    #networks: ["back-tier"]
     depends_on:
       - db
   db:
@@ -21,17 +20,14 @@ services:
       POSTGRES_USER: dbuser
       POSTGRES_PASSWORD: "newPassw0rd!"
       POSTGRES_DB: testdb
-    #volumes:
-      #- ./data/postgres:/var/lib/postgresql/data
 
-  #webapi1:
-   # build:
-    #  context: .
-     # dockerfile: DockerFileWebApi1
-    #ports: 
-     # - 8070:8070
-    #depends_on:
-     # - webapi2
-    #networks: ["back-tier"]
+  webapi1:
+    build:
+      context: .
+      dockerfile: DockerFileWebApi1
+    ports: 
+      - 8070:8070
+    depends_on:
+      - webapi2
       
   
