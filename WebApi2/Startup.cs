@@ -59,8 +59,12 @@ namespace WebApi2
     {
         public static void EnsureMigrationOfContext<T>(this IApplicationBuilder app) where T : DbContext
         {
-            var context = app.ApplicationServices.GetService<T>();
-            context.Database.Migrate();
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<T>();
+                context.Database.Migrate();
+            }
+            
         }
     }
 }
