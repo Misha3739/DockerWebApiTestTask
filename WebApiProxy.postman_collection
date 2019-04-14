@@ -1,0 +1,71 @@
+{
+	"id": "2f993a75-b493-523c-8d15-5313afcaad2e",
+	"name": "WebApiProxy copy",
+	"description": "",
+	"order": [
+		"fad5eefb-2884-3f15-9803-08a6bbf8f27a",
+		"58f44cd7-5a0a-15d4-b51f-79ac40a3dcb9"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1554819651900,
+	"owner": "3922356",
+	"public": false,
+	"hasRequests": true,
+	"requests": [
+		{
+			"id": "58f44cd7-5a0a-15d4-b51f-79ac40a3dcb9",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8070/api/user/1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "2f993a75-b493-523c-8d15-5313afcaad2e",
+			"data": null,
+			"dataMode": "params",
+			"name": "GetUser",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1555248204402,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collection_id": "2f993a75-b493-523c-8d15-5313afcaad2e"
+		},
+		{
+			"id": "fad5eefb-2884-3f15-9803-08a6bbf8f27a",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8070/api/user",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1555248344325,
+			"name": "SaveUser",
+			"description": "",
+			"collectionId": "2f993a75-b493-523c-8d15-5313afcaad2e",
+			"responses": [],
+			"rawModeData": "{\n\t\"Name\" : \"Peter\",\n\t\"Email\" : \"Peter@gmail.com\"\n}",
+			"collection_id": "2f993a75-b493-523c-8d15-5313afcaad2e"
+		}
+	]
+}
