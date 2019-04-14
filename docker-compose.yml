@@ -1,0 +1,31 @@
+version: '3'
+services: 
+  
+  webapi2:
+    build: 
+      context: .
+      dockerfile: DockerFileWebApi2
+    ports:
+      - 8060:8060
+    depends_on:
+      - db
+
+  webapi1:
+    build:
+      context: .
+      dockerfile: DockerFileWebApi1
+    ports: 
+      - 8070:8070
+    depends_on:
+      - webapi2
+      
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: "newPassw0rd!"
+      POSTGRES_DB: testdb
+
+
+  

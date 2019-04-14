@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2", "WebApi2\WebApi2.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Data", "WebApi.Data\WebApi.Data.csproj", "{81CDD9B0-475E-487E-82A2-F31DED4F26A1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{E6814C8D-0B81-48D6-8E72-2D180237B4AC}"
+ProjectSection(SolutionItems) = preProject
+	DockerFileWebApi1 = DockerFileWebApi1
+	DockerFileWebApi2 = DockerFileWebApi2
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

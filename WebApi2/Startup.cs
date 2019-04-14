@@ -31,9 +31,9 @@ namespace WebApi2
         {
             services.AddDbContext<DataContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("Default")));
-            services.AddTransient<DataContext>();
             services.AddScoped<IRepository<User>, UsersRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +49,22 @@ namespace WebApi2
                 app.UseHsts();
             }
 
+            app.EnsureMigrationOfContext<DataContext>();
+
             app.UseMvc();
+        }
+    }
+
+    public static class EnsureMigration
+    {
+        public static void EnsureMigrationOfContext<T>(this IApplicationBuilder app) where T : DbContext
+        {
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<T>();
+                context.Database.Migrate();
+            }
+            
         }
     }
 }

@@ -44,7 +44,7 @@ namespace WebApi1.Controllers
                         _config.Http.Port,
                         $"api/user/{id}").Uri.ToString();
                     _logger.Log($"Senging get request to {url} ...");
-                    return await ProxyResponse(await client.GetAsync(url));
+                    return await ProxyResponse<User>(await client.GetAsync(url));
                 }
                 catch (Exception e)
                 {
@@ -95,6 +95,18 @@ namespace WebApi1.Controllers
             {
                 case HttpStatusCode.OK:
                     return Ok(await responseMessage.Content.ReadAsStringAsync());
+                default:
+                    return BadRequest(await responseMessage.Content.ReadAsStringAsync());
+            }
+        }
+        
+        private async Task<IActionResult> ProxyResponse<T>(HttpResponseMessage responseMessage) where T : class, new()
+        {
+            switch (responseMessage.StatusCode)
+            {
+                case HttpStatusCode.OK:
+                    var content = await responseMessage.Content.ReadAsStringAsync();
+                    return Ok(JsonConvert.DeserializeObject<T>(content));
                 default:
                     return BadRequest(await responseMessage.Content.ReadAsStringAsync());
             }
