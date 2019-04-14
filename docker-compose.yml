@@ -9,17 +9,6 @@ services:
       - 8060:8060
     depends_on:
       - db
-  db:
-    build: 
-      context: .
-      dockerfile: DockerFilePostgres
-    restart: always
-    ports:
-      - 5433:5433
-    environment:
-      POSTGRES_USER: dbuser
-      POSTGRES_PASSWORD: "newPassw0rd!"
-      POSTGRES_DB: testdb
 
   webapi1:
     build:
@@ -30,4 +19,15 @@ services:
     depends_on:
       - webapi2
       
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5433:5433
+    environment:
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: "newPassw0rd!"
+      POSTGRES_DB: testdb
+
+
   

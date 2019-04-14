@@ -13,7 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{E6814C
 ProjectSection(SolutionItems) = preProject
 	DockerFileWebApi1 = DockerFileWebApi1
 	DockerFileWebApi2 = DockerFileWebApi2
-	DockerFilePostgres = DockerFilePostgres
 EndProjectSection
 EndProject
 Global
