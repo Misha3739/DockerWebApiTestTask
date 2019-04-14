@@ -1,3 +1,2 @@
 FROM library/postgres
-ADD WebApi2/*.sql /docker-entrypoint-initdb.d/
 EXPOSE 5433 
