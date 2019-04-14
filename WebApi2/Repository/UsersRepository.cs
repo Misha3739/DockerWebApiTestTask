@@ -30,6 +30,9 @@ namespace WebApi2.Repository
             {
                 existedUser.Name = entity.Name;
                 existedUser.Email = entity.Email;
+
+                if (entity.Id == 0)
+                    entity.Id = existedUser.Id;
             }
 
             await _context.SaveChangesAsync();
