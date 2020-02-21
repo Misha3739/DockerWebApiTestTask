@@ -4,3 +4,4 @@
 .DS_Store
 .idea/
 data/postgres
+/.vs/DockerWebApiTestTask/v16/Server/sqlite3
